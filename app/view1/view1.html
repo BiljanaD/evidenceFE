@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Condensed Table</h2>
+    <p>The .table-condensed class makes a table more compact by cutting cell padding in half:</p>
+    <table class="table table-condensed">
+        <thead>
+        <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>IdCard</th>
+            <th>ArrivalTime</th>
+            <th>ExitTime</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="visitor in getAllVisitors">
+            <td>{{visitor.name}}</td>
+            <td>{{visitor.surname}}</td>
+            <td>{{visitor.idCard}}</td>
+            <td>{{visitor.arrivalTime}}</td>
+            <td>{{visitor.exitTime}}</td>
+            <td>
+                <button type="button" ng-click="editVisitor(visitor.id)" class="btn btn-success">Edit</button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger" ng-click="setId(visitor.id)" data-toggle="modal" data-target="#myModal">Delete</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Delete Visitor</h4>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this visitor?</p>
+            </div>
+
+            <button type="button" class="btn btn-danger" ng-click="deleteVisitor(id)" data-dismiss="modal">Delete
+            </button>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
